@@ -27,5 +27,18 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        push: true
+        push: false
         tags: ghcr.io/${{ github.repository_owner }}/ue19-lab-05:latest
+        
+    - name: Scan Docker image for vulnerabilities
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: ghcr.io/spyro528/ue19-lab-05:lates
+        
+    - name: Push Docker image
+      if: success()
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true 
+        tags: ghcr.io/spyro528/ue19-lab-05:latest
