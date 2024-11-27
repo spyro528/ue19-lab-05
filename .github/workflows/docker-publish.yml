@@ -33,7 +33,7 @@ jobs:
     - name: Scan Docker image for vulnerabilities
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: ghcr.io/spyro528/ue19-lab-05:lates
+        image-ref: ghcr.io/spyro528/ue19-lab-05:latest
         
     - name: Push Docker image
       if: success()
